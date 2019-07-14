@@ -1,33 +1,18 @@
-import { Bodies, Engine, Render, World } from "matter-js";
+import { Engine } from "matter-js";
+import P5 from "p5";
+import { draw, setup } from "./sketch";
 
-const engine = Engine.create();
-const world = engine.world;
+// tslint:disable-next-line: no-unused-expression
+new P5((p5: P5) => {
+  const engine = Engine.create();
 
-const render = Render.create({
-  element: document.body,
-  engine,
-  options: { width: 320, height: 480 }
-});
+  p5.setup = () => {
+    const { width, height } = setup(p5, engine.world);
+    p5.createCanvas(width, height);
+    Engine.run(engine);
+  };
 
-Engine.run(engine);
-Render.run(render);
-
-World.add(
-  world,
-  Bodies.rectangle(320 / 2, 0, 320, 48, {
-    angle: (Math.random() * Math.PI * 2) / 100
-  })
-);
-
-/**
-setInterval(function() {
-  var body = Bodies.rectangle(
-    Math.random() * 800,
-    Math.random() * 100,
-    60,
-    10,
-    { angle: Math.random() * Math.PI * 2 }
-  );
-  World.add(world, body);
-}, 250);
-*/
+  p5.draw = () => {
+    draw(p5, engine.world);
+  };
+}, document.body);
