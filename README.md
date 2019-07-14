@@ -5,9 +5,9 @@ live-reload. Skip the boring project setup.
 
 ## Included
 
-- **Physics:** [matter-js](https://brm.io/matter-js)
+- **Physics:** [matter.js](https://brm.io/matter-js)
 - **Graphics:** [p5.js](https://p5js.org)
-- **Linting**: [prettier](https://prettier.io):,
+- **Linting**: [prettier](https://prettier.io),
   [tslint](https://palantir.github.io/tslint)
 - **Live-reload**: [webpack](https://webpack.js.org),
   [webpack-dev-server](https://webpack.js.org/configuration/dev-server)
