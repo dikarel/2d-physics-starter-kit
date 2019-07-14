@@ -15,9 +15,8 @@ live-reload. Skip the boring project setup.
 ## Quickstart
 
 1. Clone this repo
-2. Run `npm install && npm start`
-3. Open `http://localhost:9000`
-4. Edit `src/index.ts`
+2. Run `npm install && npm start` (this will open `http://localhost:9000`)
+3. Edit `src/index.ts`
 
 ## NPM commands
 
