@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "fix": "prettier --write src/*.ts && tslint --fix src/*.ts",
+    "test": "prettier --check src/*.ts && tslint src/*.ts"
+  },
+  "dependencies": {
+    "matter-js": "^0.14.2",
+    "p5": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.10.2",
+    "@types/p5": "^0.7.3",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
