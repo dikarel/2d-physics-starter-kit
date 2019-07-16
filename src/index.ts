@@ -1,24 +1,26 @@
 import { Engine } from "matter-js";
 import P5 from "p5";
-import NiceBoxes from "./sketches/NiceBoxes";
+import sketches from "./sketches";
 
-const SKETCH = NiceBoxes;
+const FPS = 60;
+
+// console.warn(localStorage.getItem("sketch"));
+// localStorage.setItem("sketch", "world");
 
 // tslint:disable-next-line: no-unused-expression
 new P5((p5: P5) => {
-  const engine = Engine.create();
-  const sketch = new SKETCH();
+  const engine = Engine.create({ enableSleeping: true });
+  const sketch = new sketches[0]();
 
   let period: number = null;
+  const { clientWidth: width, clientHeight: height } = document.body;
 
   p5.setup = () => {
-    const { width, height, fps, title } = sketch.setup(p5, engine.world);
-
-    document.title = title;
+    sketch.setup(p5, engine.world, width, height);
     p5.createCanvas(width, height);
-    p5.frameRate(fps);
+    p5.frameRate(FPS);
 
-    period = 1000 / fps;
+    period = 1000 / FPS;
   };
 
   p5.draw = () => {

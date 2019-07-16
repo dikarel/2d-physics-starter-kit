@@ -1,25 +1,30 @@
 import { Bodies, Body, Vector, World } from "matter-js";
 import P5 from "p5";
-import { drawAllBodies, drawBody, makeGround } from "../helpers";
-import BaseSketch from "./BaseSketch";
+import { drawAllBodies, makeGround } from "../helpers";
+import ISketch from "./ISketch";
 
+const Line = require("matter-lines").default;
 const allColors = require("nice-color-palettes");
 const randomNormal = require("random-normal");
 
 const COLORS = allColors[Math.floor(Math.random() * allColors.length)];
-const CANVAS_WIDTH = 640;
-const CANVAS_HEIGHT = 480;
 
-export default class NiceBoxes extends BaseSketch {
-  public setup(p5: P5, world: World) {
-    p5.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-
-    World.add(world, makeGround(CANVAS_WIDTH, CANVAS_HEIGHT));
+export default class NiceBoxes implements ISketch {
+  public setup(p5: P5, world: World, width: number, height: number) {
+    World.add(world, makeGround(width, height));
+    World.add(
+      world,
+      Bodies.rectangle(0, height / 2, 10, height, { isStatic: true })
+    );
+    World.add(
+      world,
+      Bodies.rectangle(width, height / 2, 10, height, { isStatic: true })
+    );
 
     setInterval(() => {
       const boxWidth = randomNormal({ mean: 50, dev: 30 });
       const box = Bodies.rectangle(
-        Math.random() * CANVAS_WIDTH,
+        Math.random() * width,
         0,
         boxWidth,
         boxWidth,
@@ -43,9 +48,9 @@ export default class NiceBoxes extends BaseSketch {
 
     return {
       fps: 60,
-      height: CANVAS_HEIGHT,
+      height,
       title: "Nice boxes",
-      width: CANVAS_WIDTH
+      width
     };
   }
 

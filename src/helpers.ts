@@ -1,4 +1,10 @@
-import { Bodies, Body, World } from "matter-js";
+import {
+  Bodies,
+  Body,
+  IChamferableBodyDefinition,
+  Vector,
+  World
+} from "matter-js";
 import P5 from "p5";
 
 export const drawAllBodies = (p5: P5, world: World) => {
@@ -7,9 +13,27 @@ export const drawAllBodies = (p5: P5, world: World) => {
   }
 };
 
+export const makeLine = (
+  start: Vector,
+  end: Vector,
+  thickness: number = 10,
+  options?: IChamferableBodyDefinition
+) => {
+  const dx = start.x - end.x;
+  const dy = start.y - end.y;
+  const length = Math.sqrt(dx * dx + dy * dy);
+
+  return Bodies.rectangle(start.x, start.y, length, thickness, {
+    angle: Math.atan2(dy, dx),
+    ...options
+  });
+};
+
 export const drawBody = (p5: P5, body: Body) => {
-  p5.beginShape("quads");
+  p5.beginShape();
   p5.fill(body.label || "white");
+  p5.strokeWeight(body.isSleeping ? 3 : 0);
+  p5.stroke("black");
   for (const v of body.vertices) {
     p5.vertex(v.x, v.y);
   }

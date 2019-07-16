@@ -1,14 +1,17 @@
 {
   "scripts": {
-    "start": "webpack-dev-server",
     "build": "webpack",
     "fix": "prettier --write src/*.ts && tslint --fix src/*.ts",
+    "ngrok": "ngrok http 9000 -hostname='dikarel.ngrok.io' --host-header=rewrite",
+    "start": "webpack-dev-server",
     "test": "prettier --check src/*.ts && tslint src/*.ts"
   },
   "dependencies": {
     "matter-js": "^0.14.2",
+    "matter-lines": "^0.1.0",
     "nice-color-palettes": "^3.0.0",
     "p5": "^0.9.0",
+    "poly-decomp": "^0.3.0",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {
