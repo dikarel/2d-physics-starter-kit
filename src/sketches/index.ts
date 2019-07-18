@@ -1,4 +1,5 @@
 import NiceBoxes from "./NiceBoxes";
 import Toy from "./Toy";
+import Typist from "./Typist";
 
-export default [NiceBoxes, Toy];
+export default [Typist, NiceBoxes, Toy];

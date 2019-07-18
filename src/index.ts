@@ -8,14 +8,14 @@ const FPS = 60;
 // localStorage.setItem("sketch", "world");
 
 // tslint:disable-next-line: no-unused-expression
-new P5((p5: P5) => {
+new P5((p5: P5): void => {
   const engine = Engine.create({ enableSleeping: true });
   const sketch = new sketches[0]();
 
-  let period: number = null;
+  let period = -1;
   const { clientWidth: width, clientHeight: height } = document.body;
 
-  p5.setup = () => {
+  p5.setup = (): void => {
     sketch.setup(p5, engine.world, width, height);
     p5.createCanvas(width, height);
     p5.frameRate(FPS);
@@ -23,7 +23,7 @@ new P5((p5: P5) => {
     period = 1000 / FPS;
   };
 
-  p5.draw = () => {
+  p5.draw = (): void => {
     Engine.update(engine, period);
     sketch.draw(p5, engine.world);
   };

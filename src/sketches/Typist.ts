@@ -1,13 +1,10 @@
 import { Bodies, Body, Vector, World } from "matter-js";
 import P5 from "p5";
-import { drawAllBodies, makeGround } from "../helpers";
-import Sketch from "./Sketch";
 import randomNormal from "random-normal";
-import allColors from "nice-color-palettes";
+import { makeGround } from "../helpers";
+import Sketch from "./Sketch";
 
-const COLORS = allColors[Math.floor(Math.random() * allColors.length)];
-
-export default class NiceBoxes implements Sketch {
+export default class Typist implements Sketch {
   public setup(p5: P5, world: World, width: number, height: number): void {
     World.add(world, makeGround(width, height));
     World.add(
@@ -30,7 +27,6 @@ export default class NiceBoxes implements Sketch {
           angle: Math.random() * Math.PI * 2
         }
       );
-      box.label = COLORS[Math.floor(Math.random() * (COLORS.length - 1)) + 1];
 
       Body.setAngularVelocity(
         box,
@@ -45,8 +41,18 @@ export default class NiceBoxes implements Sketch {
     }, 1000);
   }
 
-  public draw(p5: P5, world: World): void {
-    p5.background(COLORS[0]);
-    drawAllBodies(p5, world);
+  public draw(p5: P5): void {
+    p5.background("white");
+
+    /**
+    p5.beginShape();
+    p5.fill(body.label || "white");
+    p5.strokeWeight(body.isSleeping ? 3 : 0);
+    p5.stroke("black");
+    for (const v of body.vertices) {
+      p5.vertex(v.x, v.y);
+    }
+    p5.endShape("close");
+    */
   }
 }

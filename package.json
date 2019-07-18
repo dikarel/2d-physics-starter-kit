@@ -1,26 +1,27 @@
 {
   "scripts": {
     "build": "webpack",
-    "fix": "prettier --write src/*.ts && tslint --fix src/*.ts",
+    "format": "prettier-eslint \"src/**/*.js\"",
+    "fix": "npx eslint --fix src/*.ts src/**/*.ts",
     "ngrok": "ngrok http 9000 -hostname='dikarel.ngrok.io' --host-header=rewrite",
     "start": "webpack-dev-server",
-    "test": "prettier --check src/*.ts && tslint src/*.ts"
+    "test": "prettier --check src/*.ts src/**/*.ts && eslint src/*.ts src/**/*.ts"
   },
   "dependencies": {
     "matter-js": "^0.14.2",
-    "matter-lines": "^0.1.0",
     "nice-color-palettes": "^3.0.0",
     "p5": "^0.9.0",
-    "poly-decomp": "^0.3.0",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {
     "@types/matter-js": "^0.10.2",
     "@types/p5": "^0.7.3",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
     "prettier": "^1.18.2",
     "ts-loader": "^6.0.4",
-    "tslint": "^5.18.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6",

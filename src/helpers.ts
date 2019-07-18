@@ -7,29 +7,7 @@ import {
 } from "matter-js";
 import P5 from "p5";
 
-export const drawAllBodies = (p5: P5, world: World) => {
-  for (const body of world.bodies) {
-    drawBody(p5, body);
-  }
-};
-
-export const makeLine = (
-  start: Vector,
-  end: Vector,
-  thickness: number = 10,
-  options?: IChamferableBodyDefinition
-) => {
-  const dx = start.x - end.x;
-  const dy = start.y - end.y;
-  const length = Math.sqrt(dx * dx + dy * dy);
-
-  return Bodies.rectangle(start.x, start.y, length, thickness, {
-    angle: Math.atan2(dy, dx),
-    ...options
-  });
-};
-
-export const drawBody = (p5: P5, body: Body) => {
+export const drawBody = (p5: P5, body: Body): void => {
   p5.beginShape();
   p5.fill(body.label || "white");
   p5.strokeWeight(body.isSleeping ? 3 : 0);
@@ -40,11 +18,33 @@ export const drawBody = (p5: P5, body: Body) => {
   p5.endShape("close");
 };
 
+export const drawAllBodies = (p5: P5, world: World): void => {
+  for (const body of world.bodies) {
+    drawBody(p5, body);
+  }
+};
+
+export const makeLine = (
+  start: Vector,
+  end: Vector,
+  thickness: number = 10,
+  options?: IChamferableBodyDefinition
+): Body => {
+  const dx = start.x - end.x;
+  const dy = start.y - end.y;
+  const length = Math.sqrt(dx * dx + dy * dy);
+
+  return Bodies.rectangle(start.x, start.y, length, thickness, {
+    angle: Math.atan2(dy, dx),
+    ...options
+  });
+};
+
 export const makeGround = (
   canvasWidth: number,
   canvasHeight: number,
   groundThickness: number = 50
-) => {
+): Body => {
   return Bodies.rectangle(
     canvasWidth / 2,
     canvasHeight + groundThickness / 2,
