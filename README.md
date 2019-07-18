@@ -15,7 +15,7 @@ live-reload. Skip the boring project setup.
 ## Quickstart
 
 1. Clone this repo
-2. Run `npm install && npm start` (this will open `http://localhost:9000`)
+2. Run `npm install && npm start` (this will open `http://localhost:3000`)
 3. Edit `src/sketch.ts`
 
 ## NPM commands
