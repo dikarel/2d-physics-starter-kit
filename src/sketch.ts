@@ -4,41 +4,28 @@ import { drawAllBodies, makeGround } from "./helpers";
 import randomNormal from "random-normal";
 import allColors from "nice-color-palettes";
 
-export const config = {
-  width: 800,
-  height: 600,
-  fps: 60,
-  title: "My sketch"
-};
-
 const colors = allColors[Math.floor(Math.random() * allColors.length)];
 
-export const setup = (p5: P5, world: World) => {
-  World.add(world, makeGround(config.width, config.height));
+export const setup = (p5: P5, world: World, width: number, height: number) => {
+  World.add(world, makeGround(width, height));
   World.add(
     world,
-    Bodies.rectangle(0, config.height / 2, 10, config.height, {
+    Bodies.rectangle(0, height / 2, 10, height, {
       isStatic: true
     })
   );
   World.add(
     world,
-    Bodies.rectangle(config.width, config.height / 2, 10, config.height, {
+    Bodies.rectangle(width, height / 2, 10, height, {
       isStatic: true
     })
   );
 
   setInterval((): void => {
     const boxWidth = randomNormal({ mean: 50, dev: 30 });
-    const box = Bodies.rectangle(
-      Math.random() * config.width,
-      0,
-      boxWidth,
-      boxWidth,
-      {
-        angle: Math.random() * Math.PI * 2
-      }
-    );
+    const box = Bodies.rectangle(Math.random() * width, 0, boxWidth, boxWidth, {
+      angle: Math.random() * Math.PI * 2
+    });
     box.label = colors[Math.floor(Math.random() * (colors.length - 1)) + 1];
 
     Body.setAngularVelocity(
