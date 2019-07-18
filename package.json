@@ -2,10 +2,10 @@
   "scripts": {
     "build": "webpack",
     "format": "prettier-eslint \"src/**/*.js\"",
-    "fix": "npx eslint --fix src/*.ts src/**/*.ts",
+    "fix": "npx eslint --fix *.js *.ts src/*.ts src/**/*.ts",
     "ngrok": "ngrok http 9000 -hostname='dikarel.ngrok.io' --host-header=rewrite",
     "start": "webpack-dev-server",
-    "test": "prettier --check src/*.ts src/**/*.ts && eslint src/*.ts src/**/*.ts"
+    "test": "prettier --check *.js *.ts *.json src/*.ts src/**/*.ts && eslint *.js *.ts src/*.ts src/**/*.ts"
   },
   "dependencies": {
     "matter-js": "^0.14.2",
