@@ -8,7 +8,7 @@ live-reload. Skip the boring project setup.
 - **Physics:** [matter.js](https://brm.io/matter-js)
 - **Graphics:** [p5.js](https://p5js.org)
 - **Linting**: [prettier](https://prettier.io),
-  [tslint](https://palantir.github.io/tslint)
+  [eslint](https://eslint.org)
 - **Live-reload**: [webpack](https://webpack.js.org),
   [webpack-dev-server](https://webpack.js.org/configuration/dev-server)
 
@@ -21,6 +21,6 @@ live-reload. Skip the boring project setup.
 ## NPM commands
 
 - `npm start`: Run local dev server
-- `npm build`: Build project into `dist/bundle.js`
-- `npm fix`: Attempt to auto-fix linter errors
+- `npm run build`: Build project into `dist/bundle.js`
+- `npm run fix`: Attempt to auto-fix linter errors
 - `npm test`: Check for linter errors
